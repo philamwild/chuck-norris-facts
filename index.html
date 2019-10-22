@@ -42,6 +42,25 @@
       integrity="sha256-S1J4GVHHDMiirir9qsXWc8ZWw74PHHafpsHp5PXtjTs="
       crossorigin="anonymous"
     ></script>
-    <script></script>
+    <script>
+      function fetchChuckJSON() {
+        const url = `https://api.chucknorris.io/jokes/random/`;
+        axios
+          .get(url)
+          .then(function(response) {
+            return response.data;
+          })
+          .then(function(chuck) {
+            console.log("data decoded from JSON:", chuck);
+
+            const chuckHtml = `
+            <p>${chuck.value}</p>
+            <img src="${chuck.icon_url}" />`;
+            document.querySelector("#chuck-norris").innerHTML = chuckHtml;
+          });
+      }
+
+      fetchChuckJSON();
+    </script>
   </body>
 </html>
