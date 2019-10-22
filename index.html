@@ -33,6 +33,7 @@
         <p>Reload for another joke!</p>
 
         <div class="content" id="chuck-norris"></div>
+        <button id="myBtn">Change Joke!</button>
       </div>
     </section>
 
@@ -54,13 +55,19 @@
             console.log("data decoded from JSON:", chuck);
 
             const chuckHtml = `
-            <p>${chuck.value}</p>
-            <img src="${chuck.icon_url}" />`;
+            
+            <img src="${chuck.icon_url}" />
+            <p>${chuck.value}</p>`;
             document.querySelector("#chuck-norris").innerHTML = chuckHtml;
           });
       }
 
       fetchChuckJSON();
+    </script>
+    <script>
+      document.getElementById("myBtn").addEventListener("click", function() {
+        document.innerHTML = fetchChuckJSON();
+      });
     </script>
   </body>
 </html>
